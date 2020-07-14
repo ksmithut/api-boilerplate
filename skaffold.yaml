@@ -1,0 +1,23 @@
+apiVersion: skaffold/v1
+kind: Config
+build:
+  artifacts:
+    - image: boilerplate
+deploy:
+  kubectl:
+    manifests:
+      - k8s.yaml
+profiles:
+  - name: dev
+    activation:
+      - kubeContext: minikube
+        command: dev
+    build:
+      artifacts:
+        - image: boilerplate
+          sync:
+            manual:
+              - src: 'src/**/*.js'
+                dest: '/app/'
+          docker:
+            dockerfile: Dockerfile.dev

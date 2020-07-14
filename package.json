@@ -1,0 +1,44 @@
+{
+  "name": "boilerplate",
+  "description": "",
+  "version": "0.0.0",
+  "private": true,
+  "main": "src/index.js",
+  "bin": "src/bin/server.js",
+  "scripts": {
+    "format": "prettier-standard",
+    "lint": "prettier-standard --check --lint",
+    "start": "node src/bin/server.js",
+    "start:dev": "nodemon --inspect=0.0.0.0:9229 src/bin/server.js | pino-pretty",
+    "test": "jest",
+    "migrate:make": "node src/bin/migrate-make.js",
+    "seed:make": "node src/bin/seed-make.js",
+    "migrate:latest": "node src/bin/server.js migrate:latest | pino-pretty",
+    "migrate:rollback": "node src/bin/server.js migrate:rollback | pino-pretty",
+    "seed:run": "node src/bin/server.js seed:run | pino-pretty"
+  },
+  "dependencies": {
+    "jose": "^1.27.2",
+    "knex": "^0.21.2",
+    "nodemailer": "^6.4.10",
+    "pg": "^8.3.0",
+    "pino": "^6.3.2",
+    "pino-std-serializers": "^2.4.2",
+    "uuid": "^8.2.0",
+    "zod": "^1.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.23",
+    "@types/nodemailer": "^6.4.0",
+    "@types/pino": "^6.3.0",
+    "@types/uuid": "^8.0.0",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "lint-staged": "^10.2.11",
+    "nodemon": "^2.0.4",
+    "pino-pretty": "^4.0.1",
+    "prettier-standard": "^16.4.1",
+    "standard": "^14.3.4",
+    "typescript": "^3.9.6"
+  }
+}
