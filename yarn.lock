@@ -5040,10 +5040,10 @@ pinkie@^2.0.0:
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
-pino-pretty@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/pino-pretty/-/pino-pretty-4.0.2.tgz#b0496e486ac70ddc0bafafafc9d80e3f377a0135"
-  integrity sha512-kFeuzCHfXhWaXxUoBByzFnu7vCalrc+qEU/lJIqf29i5pEJ3oF/zbJRaAwHTgNgyOky5+jtdTF/RxF8gFbYFtA==
+pino-pretty@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/pino-pretty/-/pino-pretty-4.0.3.tgz#0b7fe6abacc0fe55a7619246d906fabb57eb771c"
+  integrity sha512-T7oFJZ6g6+icbVtZnoCYLkV2FW8VihjZ1ZaOa7TT1Y7m1hg3A0PR9kE4IBpVF1dQCj+pZDtKGJFep1xnGXmD2w==
   dependencies:
     "@hapi/bourne" "^2.0.0"
     args "^5.0.1"
@@ -5062,10 +5062,10 @@ pino-std-serializers@^2.4.2:
   resolved "https://registry.yarnpkg.com/pino-std-serializers/-/pino-std-serializers-2.4.2.tgz#cb5e3e58c358b26f88969d7e619ae54bdfcc1ae1"
   integrity sha512-WaL504dO8eGs+vrK+j4BuQQq6GLKeCCcHaMB2ItygzVURcL1CycwNEUHTD/lHFHs/NL5qAz2UKrjYWXKSf4aMQ==
 
-pino@^6.3.2:
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/pino/-/pino-6.3.2.tgz#55f73aa61584774ca5984068ffb78e8d519ce19e"
-  integrity sha512-EiP3L1hoFw19KPocWimjnfXeysld0ne89ZRQ+bf8nAeA2TyuLoggNlibAi+Kla67GvQBopLdIZOsh1z/Lruo5Q==
+pino@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/pino/-/pino-6.4.0.tgz#ec52f037607c144774565939e0c04bf16f6cdf94"
+  integrity sha512-TRDp5fJKRBtVlxd4CTox3rJL+TzwQztB/VNmT5n87zFgKVU7ztnmZkcX1zypPP+3ZZcveOTYKJy74UXdVBaXFQ==
   dependencies:
     fast-redact "^2.0.0"
     fast-safe-stringify "^2.0.7"
@@ -5920,9 +5920,9 @@ snapdragon@^0.8.1:
     use "^3.1.0"
 
 sonic-boom@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/sonic-boom/-/sonic-boom-1.0.1.tgz#a5fdfcab1ddea31732ce9c7c054f3a5751eee089"
-  integrity sha512-o9tx+bonVEXSaPtptyXQXpP8l6UV9Bi3im2geZskvWw2a/o/hrbWI7EBbbv+rOx6Hubnzun9GgH4WfbgEA3MFQ==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/sonic-boom/-/sonic-boom-1.0.2.tgz#8769646fac2ecb58bd0ed60562280aa4211598df"
+  integrity sha512-sRMmXu7uFDXoniGvtLHuQk5KWovLWoi6WKASn7rw0ro41mPf0fOolkGp4NE6680CbxvNh26zWNyFQYYWXe33EA==
   dependencies:
     atomic-sleep "^1.0.0"
     flatstr "^1.0.12"

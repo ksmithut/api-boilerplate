@@ -22,7 +22,7 @@
     "knex": "^0.21.2",
     "nodemailer": "^6.4.10",
     "pg": "^8.3.0",
-    "pino": "^6.3.2",
+    "pino": "^6.4.0",
     "pino-std-serializers": "^2.4.2",
     "uuid": "^8.2.0",
     "zod": "^1.9.0"
@@ -36,7 +36,7 @@
     "jest": "^26.1.0",
     "lint-staged": "^10.2.11",
     "nodemon": "^2.0.4",
-    "pino-pretty": "^4.0.2",
+    "pino-pretty": "^4.0.3",
     "prettier-standard": "^16.4.1",
     "standard": "^14.3.4",
     "typescript": "^3.9.6"
