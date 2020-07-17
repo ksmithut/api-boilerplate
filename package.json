@@ -23,7 +23,6 @@
     "nodemailer": "^6.4.10",
     "pg": "^8.3.0",
     "pino": "^6.4.0",
-    "pino-std-serializers": "^2.4.2",
     "uuid": "^8.2.0",
     "zod": "^1.9.0"
   },
@@ -39,6 +38,6 @@
     "pino-pretty": "^4.0.3",
     "prettier-standard": "^16.4.1",
     "standard": "^14.3.4",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.7"
   }
 }

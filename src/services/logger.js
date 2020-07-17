@@ -1,7 +1,6 @@
 'use strict'
 
 const pino = require('pino')
-const serializers = require('pino-std-serializers')
 const z = require('zod')
 
 const logLevelSchema = z.enum([
@@ -27,9 +26,9 @@ function configureLogger ({ name, logLevel, pretty = false }) {
     level: logLevelSchema.parse(logLevel),
     prettyPrint: pretty,
     serializers: {
-      req: serializers.req,
-      res: serializers.res,
-      err: serializers.err
+      req: pino.stdSerializers.req,
+      res: pino.stdSerializers.res,
+      err: pino.stdSerializers.err
     },
     redact: {
       paths: ['req.headers.authorization', 'req.headers.cookie']
