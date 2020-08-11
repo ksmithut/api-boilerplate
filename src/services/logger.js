@@ -31,7 +31,11 @@ function configureLogger ({ name, logLevel, pretty = false }) {
       err: pino.stdSerializers.err
     },
     redact: {
-      paths: ['req.headers.authorization', 'req.headers.cookie']
+      paths: [
+        'req.headers.authorization',
+        'req.headers.cookie',
+        'res.headers["set-cookie"]'
+      ]
     }
   })
 }

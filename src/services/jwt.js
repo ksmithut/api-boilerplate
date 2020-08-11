@@ -30,14 +30,14 @@ function configureJWT (keys) {
   return {
     /**
      * @param {object} payload
-     * @param {import('jose').JWT.SignOptions | undefined} options
+     * @param {import('jose').JWT.SignOptions} [options]
      */
     sign (payload, options) {
       return JWT.sign(payload, signingKey, options)
     },
     /**
      * @param {string} token
-     * @param {import('jose').JWT.VerifyOptions<false> | undefined} options
+     * @param {import('jose').JWT.VerifyOptions<false>} [options]
      */
     verify (token, options) {
       return JWT.verify(token, keyStore, options)

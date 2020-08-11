@@ -11,7 +11,7 @@ const http = require('http')
  */
 function configureServer ({ logger, knex, mail, jwt }) {
   const server = http.createServer((req, res) => {
-    console.log(req.method, req.url)
+    res.on('finish', () => logger.info({ req, res }))
     res.end(`${req.method} ${req.url}`)
   })
   return server
