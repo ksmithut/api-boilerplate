@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 
+require('dotenv').config()
 const { configureApp } = require('../index')
 const { once } = require('../lib/once')
 const { getConfig } = require('../config')

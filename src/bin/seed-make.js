@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 
+require('dotenv').config()
 const { getConfig } = require('../config')
 const { configureLogger } = require('../services/logger')
 const { configureKnex } = require('../services/knex')
