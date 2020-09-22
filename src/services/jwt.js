@@ -37,7 +37,7 @@ function configureJWT (keys) {
     },
     /**
      * @param {string} token
-     * @param {import('jose').JWT.VerifyOptions<false>} [options]
+     * @param {import('jose').JWT.VerifyOptions} [options]
      */
     verify (token, options) {
       return JWT.verify(token, keyStore, options)
