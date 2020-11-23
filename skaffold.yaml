@@ -2,7 +2,7 @@ apiVersion: skaffold/v1
 kind: Config
 build:
   artifacts:
-    - image: boilerplate
+    - image: api-boilerplate
 deploy:
   kubectl:
     manifests:
@@ -14,7 +14,7 @@ profiles:
         command: dev
     build:
       artifacts:
-        - image: boilerplate
+        - image: api-boilerplate
           sync:
             manual:
               - src: 'src/**/*.js'

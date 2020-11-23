@@ -1,23 +1,25 @@
 #!/usr/bin/env node
-'use strict'
+import dotenv from 'dotenv'
+import { Command } from 'commander'
+import { getConfig } from '../config.js'
+import { configureLogger } from '../utils/logger.js'
 
-require('dotenv').config()
-const { getConfig } = require('../config')
-const { configureLogger } = require('../services/logger')
-const { configureKnex } = require('../services/knex')
+dotenv.config()
 
-const { name, logLevel, postgresURI } = getConfig(process.env)
+const program = new Command()
+const { name, logLevel } = getConfig(process.env)
+const logger = configureLogger({ name, logLevel, pretty: true })
 
-const [seedName] = process.argv.slice(2)
-const logger = configureLogger({ name, logLevel })
-const knex = configureKnex(postgresURI)
-
-knex.seed
-  .make(seedName)
-  .then(file => {
-    logger.info(`Seed file created: ${file}`)
+program
+  .arguments('<name>')
+  .description('Creates a new seed file', {
+    name: 'The name of the seed'
   })
-  .catch(err => {
-    console.error(err)
-    process.exit(1)
+  .action(async name => {
+    logger.info('No migration framework implemented')
   })
+
+program.parseAsync(process.argv).catch(err => {
+  console.error(err)
+  process.exit(1)
+})

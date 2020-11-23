@@ -1,34 +1,18 @@
 version: '3'
 services:
   # Application
-  boilerplate:
-    image: boilerplate:dev
+  api-boilerplate:
+    image: api-boilerplate:dev
     build:
       context: .
       dockerfile: Dockerfile.dev
     depends_on: []
     environment:
-      POSTGRES_URI: postgres://postgres:postgres@postgres:5432/postgres
-      SMTP_URI: smtp://maildev:25/?ignoreTLS=true
+      NAME: api-boilerplate
+      PORT: '3000'
+      LOG_LEVEL: info
     volumes:
       - ./src:/app/src # For nodemon to watch for file changes
     ports:
       - '3000:3000' # Application port
       - '9229:9229' # Debug port
-  # Database
-  postgres:
-    image: postgres:alpine
-    ports:
-      - 5432:5432
-    volumes:
-      - /var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
-  # SMTP Server
-  maildev:
-    image: djfarrelly/maildev
-    ports:
-      - '1080:80'
-      - '1025:25'

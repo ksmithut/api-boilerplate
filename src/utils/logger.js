@@ -1,9 +1,7 @@
-'use strict'
+import pino from 'pino'
+import z from 'zod'
 
-const pino = require('pino')
-const z = require('zod')
-
-const logLevelSchema = z.enum([
+export const logLevelSchema = z.enum([
   'silent',
   'trace',
   'debug',
@@ -20,7 +18,7 @@ const logLevelSchema = z.enum([
  * @param {boolean} [options.pretty=false]
  * @returns {import('pino').BaseLogger}
  */
-function configureLogger ({ name, logLevel, pretty = false }) {
+export function configureLogger ({ name, logLevel, pretty = false }) {
   return pino({
     name,
     level: logLevelSchema.parse(logLevel),
@@ -39,4 +37,3 @@ function configureLogger ({ name, logLevel, pretty = false }) {
     }
   })
 }
-exports.configureLogger = configureLogger

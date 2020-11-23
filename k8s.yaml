@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: boilerplate
+  name: api-boilerplate
   labels:
-    app: boilerplate
+    app: api-boilerplate
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: boilerplate
+      app: api-boilerplate
   template:
     metadata:
       labels:
-        app: boilerplate
+        app: api-boilerplate
     spec:
       containers:
-        - name: boilerplate
-          image: boilerplate
+        - name: api-boilerplate
+          image: api-boilerplate
           ports:
             - containerPort: 3000
           # livenessProbe:
@@ -35,20 +35,20 @@ spec:
           env:
             - name: NODE_ENV
               value: development
-            # - name: ENV_VAR
-            #   valueFrom:
-            #     secretKeyRef:
-            #       name: secret-name
-            #       key: secret-key
+          # - name: ENV_VAR
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: secret-name
+          #       key: secret-key
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: boilerplate
+  name: api-boilerplate
 spec:
   selector:
-    app: boilerplate
+    app: api-boilerplate
   type: NodePort
   ports:
     - protocol: TCP
@@ -59,15 +59,15 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: boilerplate-ingress
+  name: api-boilerplate-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: boilerplate.localdev
+    - host: api-boilerplate.localdev
       http:
         paths:
           - path: /
             backend:
-              serviceName: boilerplate
+              serviceName: api-boilerplate
               servicePort: 3000

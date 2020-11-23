@@ -1,51 +1,59 @@
 #!/usr/bin/env node
-'use strict'
+import dotenv from 'dotenv'
+import process from 'process'
+import { Command } from 'commander'
+import { configureApp } from '../index.js'
+import { once } from '../lib/once.js'
+import { getConfig } from '../config.js'
 
-require('dotenv').config()
-const { configureApp } = require('../index')
-const { once } = require('../lib/once')
-const { getConfig } = require('../config')
+dotenv.config()
 
+const program = new Command()
 const app = configureApp(getConfig(process.env))
 
-const [command = 'start'] = process.argv.slice(2)
+program
+  .command('start', { isDefault: true })
+  .description('Starts the server')
+  .option('-m,--migrate', 'Run migrations before starting', false)
+  .action(async ({ migrate }) => {
+    if (migrate) await app.migrateUp()
+    const close = await app.start()
+    const shutdown = once(() => {
+      close()
+        .then(() => process.exit())
+        .catch(err => {
+          console.error(err)
+          process.exit(1)
+        })
+    })
+    process.on('SIGINT', shutdown)
+    process.on('SIGTERM', shutdown)
+    process.on('SIGUSR2', shutdown)
+  })
 
-/**
- * @param {any} err
- */
-function handleError (err) {
+program
+  .command('migrate:up')
+  .description('Run migrations')
+  .action(async () => {
+    await app.migrateUp()
+  })
+
+program
+  .command('migrate:down')
+  .description('Rollback the most recently run migration batch')
+  .option('-a, --all', 'Run all migrations down', false)
+  .action(async ({ all }) => {
+    await app.migrateDown({ all })
+  })
+
+program
+  .command('seed:run')
+  .description('Run the seed scripts')
+  .action(async () => {
+    await app.seedRun()
+  })
+
+program.parseAsync(process.argv).catch(err => {
   console.error(err)
   process.exit(1)
-}
-
-switch (command) {
-  case 'start':
-    app
-      .start()
-      .then(close => {
-        const shutdown = once(() => {
-          close()
-            .then(() => process.exit())
-            .catch(err => {
-              console.error(err)
-              process.exit(1)
-            })
-        })
-        process.on('SIGINT', shutdown)
-        process.on('SIGTERM', shutdown)
-        process.on('SIGUSR2', shutdown)
-      })
-      .catch(handleError)
-    break
-  case 'migrate:latest':
-    app.migrateLatest().catch(handleError)
-    break
-  case 'migrate:rollback':
-    app.migrateRollback().catch(handleError)
-    break
-  case 'seed:run':
-    app.seedRun().catch(handleError)
-    break
-  default:
-    handleError(new ReferenceError(`unknown command ${command}`))
-}
+})

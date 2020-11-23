@@ -138,21 +138,3 @@ typings/
 .history
 
 # End of https://www.gitignore.io/api/node,visualstudiocode,macos,linux
-
-config/local*.js
-
-.vscode
-.dockerignore
-.eslintrc
-.git
-.gitignore
-.huskyrc
-docker-compose.yaml
-Dockerfile.dev
-Dockerfile
-jest.config.js
-k8s.yaml
-lint-staged.config.js
-README.md
-skaffold.yaml
-tsconfig.js
