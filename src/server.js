@@ -21,7 +21,7 @@ export function configureServer ({ logger }) {
     const { validation, validationContext } = error
     if (validation) {
       return reply.status(400).send({
-        code: 'INVALID_PARAMS',
+        code: 'INVALID_INPUT',
         details: { context: validationContext, errors: validation }
       })
     }
