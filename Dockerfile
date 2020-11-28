@@ -19,4 +19,4 @@ COPY --chown=node:node src src
 
 # Exports
 EXPOSE 3000
-CMD [ "node", "src/bin/server.js", "--migrate" ]
+CMD [ "node", "src/bin/server.js", "start", "--migrate" ]
