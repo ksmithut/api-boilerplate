@@ -15,10 +15,9 @@ export function configureApp (config) {
     const knex = configureKnex(postgresURL)
     const server = configureServer({ logger })
     await server.listen(port)
-    const closeServer = async () => server.close()
     // Graceful shutdown function
     return async () => {
-      await timeout(closeServer(), 10000)
+      await timeout(Promise.resolve(server.close()), 10000)
       await timeout(knex.destroy(), 10000)
     }
   }

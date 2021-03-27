@@ -17,7 +17,8 @@
     "migrate:up": "node src/bin/server.js migrate:up",
     "migrate:down": "node src/bin/server.js migrate:down",
     "seed:run": "node src/bin/server.js seed:run",
-    "docker:dev": "docker-compose up --build --renew-anon-volumes; yarn docker:down; echo 'done'",
+    "docker:up": "docker-compose up --build --renew-anon-volumes --detach",
+    "docker:logs": "docker-compose logs --follow api-boilerplate",
     "docker:down": "docker-compose down --volumes",
     "docker:run": "docker-compose exec api-boilerplate yarn run"
   },
@@ -33,6 +34,7 @@
     "zod": "^3.0.0-alpha.33"
   },
   "devDependencies": {
+    "@arkweid/lefthook": "^0.7.2",
     "@types/node": "^14.14.37",
     "@types/nodemailer": "^6.4.1",
     "@types/pino": "^6.3.6",
