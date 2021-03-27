@@ -1,5 +1,5 @@
 import pino from 'pino'
-import z from 'zod'
+import { z } from 'zod'
 
 export const logLevelSchema = z.enum([
   'silent',

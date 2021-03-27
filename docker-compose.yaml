@@ -6,13 +6,26 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    depends_on: []
+    depends_on:
+      - postgres
     environment:
       NAME: api-boilerplate
       PORT: '3000'
       LOG_LEVEL: info
+      POSTGRES_URL: postgres://postgres:postgres@postgres:5432/postgres
     volumes:
       - ./src:/app/src # For nodemon to watch for file changes
     ports:
       - '3000:3000' # Application port
       - '9229:9229' # Debug port
+
+  postgres:
+    image: postgres:alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - /var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres

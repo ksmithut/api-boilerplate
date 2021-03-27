@@ -3,12 +3,14 @@ import dotenv from 'dotenv'
 import { Command } from 'commander'
 import { getConfig } from '../config.js'
 import { configureLogger } from '../utils/logger.js'
+import { configureKnex } from '../utils/knex.js'
 
 dotenv.config()
 
 const program = new Command()
-const { name, logLevel } = getConfig(process.env)
+const { name, logLevel, postgresURL } = getConfig(process.env)
 const logger = configureLogger({ name, logLevel, pretty: true })
+const knex = configureKnex(postgresURL)
 
 program
   .arguments('<name>')
@@ -16,7 +18,8 @@ program
     name: 'The name of the seed'
   })
   .action(async name => {
-    logger.info('No migration framework implemented')
+    const filename = await knex.seed.make(name)
+    logger.info(`Seed file created: ${filename}`)
   })
 
 program.parseAsync(process.argv).catch(err => {

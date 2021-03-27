@@ -11,7 +11,7 @@
     "lint": "prettier-standard --check --lint && tsc",
     "start": "node src/bin/server.js",
     "start:dev": "nodemon --inspect=0.0.0.0:9229 src/bin/server.js | pino-pretty -c -i hostname,pid,time,name",
-    "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
+    "test": "echo 'no tests yet'",
     "migrate:make": "node src/bin/migrate-make.js",
     "seed:make": "node src/bin/seed-make.js",
     "migrate:up": "node src/bin/server.js migrate:up",
@@ -19,33 +19,28 @@
     "seed:run": "node src/bin/server.js seed:run",
     "docker:dev": "docker-compose up --build --renew-anon-volumes; yarn docker:down; echo 'done'",
     "docker:down": "docker-compose down --volumes",
-    "docker:migrate:up": "docker-compose exec api-boilerplate yarn migrate:up",
-    "docker:migrate:down": "docker-compose exec api-boilerplate yarn migrate:down",
-    "docker:seed:run": "docker-compose exec api-boilerplate yarn seed:run"
+    "docker:run": "docker-compose exec api-boilerplate yarn run"
   },
   "dependencies": {
-    "commander": "^6.2.0",
+    "commander": "^7.2.0",
     "dotenv": "^8.2.0",
-    "fastify": "^3.8.0",
-    "nodemailer": "^6.4.16",
-    "pino": "^6.7.0",
-    "uuid": "^8.3.1",
-    "zod": "^2.0.0-beta.22"
+    "fastify": "^3.14.1",
+    "knex": "^0.95.4",
+    "nodemailer": "^6.5.0",
+    "pg": "^8.5.1",
+    "pino": "^6.11.2",
+    "uuid": "^8.3.2",
+    "zod": "^3.0.0-alpha.33"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
-    "@types/nodemailer": "^6.4.0",
-    "@types/pino": "^6.3.4",
-    "@types/supertest": "^2.0.10",
+    "@types/node": "^14.14.37",
+    "@types/nodemailer": "^6.4.1",
+    "@types/pino": "^6.3.6",
     "@types/uuid": "^8.3.0",
-    "husky": "^4.3.0",
-    "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
-    "nodemon": "^2.0.6",
-    "pino-pretty": "^4.3.0",
+    "nodemon": "^2.0.7",
+    "pino-pretty": "^4.7.1",
     "prettier-standard": "^16.4.1",
     "standard": "^16.0.3",
-    "supertest": "^6.0.1",
-    "typescript": "^4.1.2"
+    "typescript": "^4.2.3"
   }
 }
